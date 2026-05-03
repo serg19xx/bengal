@@ -1,5 +1,7 @@
 # Willow Home Cattery (Koty)
 
+Сайт питомника (EN/FR). Репозиторий на GitHub: [serg19xx/bengal](https://github.com/serg19xx/bengal).
+
 Small bilingual marketing site for a home cattery: **English** and **French**.
 
 ## Stack
