@@ -1,0 +1,35 @@
+---
+import type { Locale } from "../i18n/config";
+import { getMessages } from "../i18n/messages";
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const m = getMessages(lang);
+const year = new Date().getFullYear();
+---
+
+<footer class="mt-16 border-t border-beige-300/60 bg-cream-100">
+  <div class="mx-auto max-w-6xl px-4 py-12 sm:px-6">
+    <div class="flex flex-col gap-10 sm:flex-row sm:items-start sm:justify-between">
+      <div>
+        <p class="font-serif text-xl font-semibold text-soft-900">{m.meta.siteName}</p>
+        <p class="mt-2 max-w-sm text-sm leading-relaxed text-warm-600">{m.footer.blurb}</p>
+      </div>
+      <div>
+        <p class="text-xs font-semibold uppercase tracking-wider text-warm-500">{m.footer.socialLabel}</p>
+        <ul class="mt-3 flex flex-wrap gap-3 text-sm">
+          <li>
+            <a href="#" class="text-soft-800 underline-offset-4 hover:underline">{m.footer.instagram}</a>
+          </li>
+          <li>
+            <a href="#" class="text-soft-800 underline-offset-4 hover:underline">{m.footer.facebook}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <p class="mt-10 text-xs text-warm-500">© {year} {m.meta.siteName}. {m.footer.legal}</p>
+  </div>
+</footer>

@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+@theme {
+  /* Headings: elegant transitional serif. Body: clear geometric sans with a soft feel. */
+  --font-serif: "Cormorant", ui-serif, Georgia, "Times New Roman", serif;
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+
+  --color-cream-50: #fefdfb;
+  --color-cream-100: #faf6ef;
+  --color-cream-200: #f3ebe0;
+  --color-beige-300: #e8dcc8;
+  --color-warm-400: #b8aea2;
+  --color-warm-500: #8a8178;
+  --color-warm-600: #6b635c;
+  --color-soft-700: #5c4a3d;
+  --color-soft-800: #3d3229;
+  --color-soft-900: #2a221c;
+}
+
+@layer base {
+  html {
+    @apply scroll-smooth antialiased;
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    @apply bg-cream-50 font-sans text-soft-900;
+    font-feature-settings: "kern" 1, "liga" 1;
+  }
+
+  /* Cormorant reads best with a touch of negative tracking at display sizes */
+  .font-serif {
+    letter-spacing: -0.02em;
+  }
+}

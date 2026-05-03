@@ -1,0 +1,55 @@
+---
+export const prerender = true;
+import Layout from "../../layouts/Layout.astro";
+import SectionTitle from "../../components/SectionTitle.astro";
+import { getStaticLangPaths, isLocale, defaultLocale } from "../../i18n/config";
+import type { Locale } from "../../i18n/config";
+import { getMessages } from "../../i18n/messages";
+import { pathFor } from "../../i18n/paths";
+
+export function getStaticPaths() {
+  return getStaticLangPaths();
+}
+
+const langParam = Astro.params.lang;
+const lang: Locale = isLocale(langParam) ? langParam : defaultLocale;
+const m = getMessages(lang);
+
+const steps = [
+  { title: m.adoptionPage.step1Title, body: m.adoptionPage.step1Body },
+  { title: m.adoptionPage.step2Title, body: m.adoptionPage.step2Body },
+  { title: m.adoptionPage.step3Title, body: m.adoptionPage.step3Body },
+  { title: m.adoptionPage.step4Title, body: m.adoptionPage.step4Body },
+];
+---
+
+<Layout lang={lang} title={m.adoptionPage.title} description={m.adoptionPage.lead}>
+  <div class="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-14">
+    <SectionTitle eyebrow={m.adoptionPage.kicker} title={m.adoptionPage.heading} subtitle={m.adoptionPage.lead} />
+
+    <ol class="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-4 list-none p-0">
+      {
+        steps.map((step, i) => (
+          <li class="relative rounded-3xl border border-beige-300/70 bg-white p-6 shadow-sm">
+            <span class="flex h-10 w-10 items-center justify-center rounded-2xl bg-soft-800 text-sm font-bold text-cream-50">
+              {i + 1}
+            </span>
+            <h2 class="mt-4 font-serif text-lg font-semibold text-soft-900">{step.title}</h2>
+            <p class="mt-2 text-sm leading-relaxed text-warm-600">{step.body}</p>
+          </li>
+        ))
+      }
+    </ol>
+
+    <div class="mt-14 rounded-3xl border border-beige-300/60 bg-cream-100 px-6 py-8 sm:px-10">
+      <h2 class="font-serif text-xl font-semibold text-soft-900">{m.adoptionPage.noteTitle}</h2>
+      <p class="mt-3 max-w-3xl text-warm-600 leading-relaxed">{m.adoptionPage.noteBody}</p>
+      <a
+        href={pathFor(lang, "contact")}
+        class="mt-6 inline-flex rounded-2xl bg-soft-800 px-6 py-3 text-sm font-semibold text-cream-50 hover:bg-soft-700"
+      >
+        {m.nav.contact}
+      </a>
+    </div>
+  </div>
+</Layout>

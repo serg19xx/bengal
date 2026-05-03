@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img" aria-label="Placeholder cat photo 2">
+  <defs>
+    <linearGradient id="g2" x1="1" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f3ebe0"/>
+      <stop offset="100%" stop-color="#dcd0c2"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#g2)"/>
+  <circle cx="720" cy="360" r="150" fill="#cbb59f" opacity="0.88"/>
+  <ellipse cx="540" cy="540" rx="200" ry="150" fill="#bfa894" opacity="0.82"/>
+  <circle cx="660" cy="330" r="20" fill="#2a221c" opacity="0.3"/>
+  <circle cx="760" cy="330" r="20" fill="#2a221c" opacity="0.3"/>
+  <text x="600" y="820" text-anchor="middle" font-family="Georgia,serif" font-size="28" fill="#6b635c" opacity="0.7">Placeholder 2</text>
+</svg>

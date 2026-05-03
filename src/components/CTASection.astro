@@ -1,0 +1,42 @@
+---
+interface LinkItem {
+  href: string;
+  label: string;
+  variant?: "primary" | "secondary";
+}
+
+interface Props {
+  title?: string;
+  description?: string;
+  links: LinkItem[];
+}
+
+const { title = "Ready to meet our cats?", description, links } = Astro.props;
+
+const baseBtn =
+  "inline-flex items-center justify-center rounded-2xl px-6 py-3.5 text-sm font-semibold transition focus:outline-none focus-visible:ring-2 focus-visible:ring-soft-700 focus-visible:ring-offset-2 focus-visible:ring-offset-cream-50";
+---
+
+<section class="rounded-3xl bg-cream-200/80 border border-beige-300/60 px-6 py-12 sm:px-10 sm:py-14">
+  <div class="max-w-3xl mx-auto text-center">
+    <h2 class="font-serif text-2xl sm:text-3xl font-semibold text-soft-900">{title}</h2>
+    {description && <p class="mt-4 text-warm-600 leading-relaxed">{description}</p>}
+    <div class="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
+      {
+        links.map((link) => (
+          <a
+            href={link.href}
+            class:list={[
+              baseBtn,
+              link.variant === "secondary" || !link.variant
+                ? "bg-white text-soft-800 border border-beige-300 hover:bg-cream-50"
+                : "bg-soft-800 text-cream-50 hover:bg-soft-700",
+            ]}
+          >
+            {link.label}
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</section>

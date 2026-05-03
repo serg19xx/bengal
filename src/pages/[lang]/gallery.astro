@@ -1,0 +1,33 @@
+---
+export const prerender = true;
+import Layout from "../../layouts/Layout.astro";
+import SectionTitle from "../../components/SectionTitle.astro";
+import ImageLightbox from "../../components/vue/ImageLightbox.vue";
+import { getAllGalleryImages } from "../../data/cats";
+import { getStaticLangPaths, isLocale, defaultLocale } from "../../i18n/config";
+import type { Locale } from "../../i18n/config";
+import { getMessages } from "../../i18n/messages";
+
+export function getStaticPaths() {
+  return getStaticLangPaths();
+}
+
+const langParam = Astro.params.lang;
+const lang: Locale = isLocale(langParam) ? langParam : defaultLocale;
+const m = getMessages(lang);
+
+const images = getAllGalleryImages();
+const alts = images.map((_, i) => `${m.galleryPage.heading} ${i + 1}`);
+const lightboxUi = m.lightbox;
+---
+
+<Layout lang={lang} title={m.galleryPage.title} description={m.galleryPage.subtitle}>
+  <div class="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-14">
+    <SectionTitle
+      eyebrow={m.galleryPage.eyebrow}
+      title={m.galleryPage.heading}
+      subtitle={m.galleryPage.subtitle}
+    />
+    <ImageLightbox client:load images={images} imageAlts={alts} ui={lightboxUi} />
+  </div>
+</Layout>

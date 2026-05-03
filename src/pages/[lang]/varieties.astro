@@ -1,0 +1,56 @@
+---
+export const prerender = true;
+import Layout from "../../layouts/Layout.astro";
+import SectionTitle from "../../components/SectionTitle.astro";
+import { getStaticLangPaths, isLocale, defaultLocale } from "../../i18n/config";
+import type { Locale } from "../../i18n/config";
+import { getMessages } from "../../i18n/messages";
+import { pathFor } from "../../i18n/paths";
+
+export function getStaticPaths() {
+  return getStaticLangPaths();
+}
+
+const langParam = Astro.params.lang;
+const lang: Locale = isLocale(langParam) ? langParam : defaultLocale;
+const m = getMessages(lang);
+
+const cards = [
+  { title: m.varietiesPage.card1Title, body: m.varietiesPage.card1Body, img: "/images/cats/placeholder-1.svg" },
+  { title: m.varietiesPage.card2Title, body: m.varietiesPage.card2Body, img: "/images/cats/placeholder-4.svg" },
+  { title: m.varietiesPage.card3Title, body: m.varietiesPage.card3Body, img: "/images/cats/placeholder-3.svg" },
+];
+---
+
+<Layout lang={lang} title={m.varietiesPage.title} description={m.varietiesPage.lead}>
+  <div class="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-14">
+    <SectionTitle eyebrow={m.varietiesPage.kicker} title={m.varietiesPage.heading} subtitle={m.varietiesPage.lead} />
+
+    <p class="max-w-3xl text-warm-600 leading-relaxed">{m.varietiesPage.waitlist}</p>
+
+    <div class="mt-12 grid gap-8 md:grid-cols-3">
+      {
+        cards.map((c) => (
+          <article class="overflow-hidden rounded-3xl border border-beige-300/70 bg-white shadow-sm">
+            <div class="aspect-[4/3] bg-cream-100">
+              <img src={c.img} alt="" class="h-full w-full object-cover" loading="lazy" width="800" height="600" />
+            </div>
+            <div class="p-6">
+              <h2 class="font-serif text-xl font-semibold text-soft-900">{c.title}</h2>
+              <p class="mt-2 text-sm leading-relaxed text-warm-600">{c.body}</p>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+
+    <div class="mt-14 text-center">
+      <a
+        href={pathFor(lang, "contact")}
+        class="inline-flex rounded-2xl bg-soft-800 px-6 py-3.5 text-sm font-semibold text-cream-50 hover:bg-soft-700"
+      >
+        {m.nav.contact}
+      </a>
+    </div>
+  </div>
+</Layout>

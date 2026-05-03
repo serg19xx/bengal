@@ -1,0 +1,37 @@
+{
+  "slug": "luna",
+  "sortOrder": 10,
+  "name": "Luna",
+  "breed": {
+    "en": "British Shorthair",
+    "fr": "British Shorthair"
+  },
+  "age": {
+    "en": "3 years",
+    "fr": "3 ans"
+  },
+  "gender": "Female",
+  "personalityShort": {
+    "en": "Calm observer who loves sunny windowsills.",
+    "fr": "Observatrice calme qui adore les rebords de fenêtre ensoleillés."
+  },
+  "personality": {
+    "en": "Luna is gentle and predictable. She enjoys quiet routines, soft blankets, and watching birds from the window. She warms up slowly to new people but becomes deeply affectionate once she trusts you.",
+    "fr": "Luna est douce et prévisible. Elle aime les routines tranquilles, les couvertures moelleuses et observer les oiseaux. Elle se dévoile lentement mais devient très affectueuse lorsqu'elle vous fait confiance."
+  },
+  "status": "Not for sale",
+  "featured": true,
+  "coverImage": "/images/cats/placeholder-1.svg",
+  "gallery": [
+    "/images/cats/placeholder-1.svg",
+    "/images/cats/placeholder-3.svg"
+  ],
+  "healthNote": {
+    "en": "Vaccination records available to approved families. Last vet check: placeholder date.",
+    "fr": "Dossiers de vaccination disponibles pour les familles retenues. Dernière visite : date à compléter."
+  },
+  "parentsNote": {
+    "en": "Dam: Willow (CH). Sire: Atlas (GCH). Pedigree details on request.",
+    "fr": "Mère : Willow (CH). Père : Atlas (GCH). Pedigree sur demande."
+  }
+}

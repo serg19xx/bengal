@@ -1,0 +1,32 @@
+{
+  "slug": "nori",
+  "sortOrder": 50,
+  "name": "Nori",
+  "breed": { "en": "Ragdoll", "fr": "Ragdoll" },
+  "age": { "en": "12 weeks", "fr": "12 semaines" },
+  "gender": "Female",
+  "personalityShort": {
+    "en": "Bright-eyed explorer learning household manners.",
+    "fr": "Exploratrice vive qui apprend les codes de la maison."
+  },
+  "personality": {
+    "en": "Nori is learning litter habits, scratching posts, and gentle play. She eats well, sleeps deeply, and wakes ready for supervised adventures.",
+    "fr": "Nori apprend la litière, les griffoirs et le jeu doux. Elle mange bien, dort profondément et se réveille prête pour des aventures supervisées."
+  },
+  "status": "Available",
+  "featured": true,
+  "coverImage": "/images/cats/placeholder-5.svg",
+  "gallery": [
+    "/images/cats/placeholder-5.svg",
+    "/images/cats/placeholder-6.svg",
+    "/images/cats/placeholder-2.svg"
+  ],
+  "healthNote": {
+    "en": "Kitten wellness schedule documented; microchip planned before placement.",
+    "fr": "Calendrier de suivi documenté; puce électronique prévue avant le départ."
+  },
+  "parentsNote": {
+    "en": "Both parents live on-site; meet-and-greet by appointment.",
+    "fr": "Les deux parents vivent sur place; rencontre sur rendez-vous."
+  }
+}

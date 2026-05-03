@@ -1,0 +1,7 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Scoped to CMS island: root is inside .cms-shell from CmsRoot */

@@ -1,0 +1,50 @@
+---
+import "../styles/global.css";
+import Fonts from "../components/Fonts.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import type { Locale } from "../i18n/config";
+import { isLocale } from "../i18n/config";
+import { getMessages } from "../i18n/messages";
+import { swapLocaleInPath } from "../i18n/paths";
+
+interface Props {
+  lang: string | undefined;
+  title: string;
+  description?: string;
+}
+
+const { lang: langParam, title, description } = Astro.props;
+const lang: Locale = isLocale(langParam) ? langParam : "en";
+const m = getMessages(lang);
+const metaDescription = description ?? m.meta.defaultDescription;
+const fullTitle = title === m.home.title ? m.meta.siteName : `${title} · ${m.meta.siteName}`;
+
+const pathname = Astro.url.pathname;
+const hrefEn = new URL(swapLocaleInPath(pathname, "en"), Astro.site ?? Astro.url).href;
+const hrefFr = new URL(swapLocaleInPath(pathname, "fr"), Astro.site ?? Astro.url).href;
+---
+
+<!doctype html>
+<html lang={lang} class="bg-cream-50">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={metaDescription} />
+    <title>{fullTitle}</title>
+    <link rel="alternate" hreflang="en" href={hrefEn} />
+    <link rel="alternate" hreflang="fr" href={hrefFr} />
+    <link rel="alternate" hreflang="x-default" href={hrefEn} />
+    <Fonts />
+  </head>
+  <body class="min-h-screen flex flex-col text-warm-600">
+    <Header lang={lang} />
+    <!-- pt matches fixed header height (logo row + vertical padding + border) -->
+    <main class="flex-1 isolate pt-[4.75rem]">
+      <slot />
+    </main>
+    <Footer lang={lang} />
+  </body>
+</html>

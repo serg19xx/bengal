@@ -1,0 +1,28 @@
+{
+  "slug": "atlas",
+  "sortOrder": 60,
+  "name": "Atlas",
+  "breed": { "en": "British Shorthair", "fr": "British Shorthair" },
+  "age": { "en": "4 years", "fr": "4 ans" },
+  "gender": "Male",
+  "personalityShort": {
+    "en": "Stoic guardian of the hallway — secretly a marshmallow.",
+    "fr": "Gardien stoïque du couloir — en secret, une guimauve."
+  },
+  "personality": {
+    "en": "Atlas is not for sale and helps raise confident kittens through calm modeling. He tolerates grooming and enjoys structured play sessions.",
+    "fr": "Atlas n'est pas disponible et aide les chatons à prendre confiance par l'exemple calme. Il tolère le brossage et aime les jeux structurés."
+  },
+  "status": "Not for sale",
+  "featured": false,
+  "coverImage": "/images/cats/placeholder-6.svg",
+  "gallery": ["/images/cats/placeholder-6.svg", "/images/cats/placeholder-4.svg"],
+  "healthNote": {
+    "en": "Stud health maintained with regular veterinary partnership.",
+    "fr": "Santé du reproducteur suivie avec un partenariat vétérinaire régulier."
+  },
+  "parentsNote": {
+    "en": "Foundation sire for our British program.",
+    "fr": "Père fondateur du programme British."
+  }
+}

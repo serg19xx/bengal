@@ -1,0 +1,32 @@
+{
+  "slug": "milo",
+  "sortOrder": 20,
+  "name": "Milo",
+  "breed": { "en": "Ragdoll", "fr": "Ragdoll" },
+  "age": { "en": "8 months", "fr": "8 mois" },
+  "gender": "Male",
+  "personalityShort": {
+    "en": "Playful, floppy, and very people-oriented.",
+    "fr": "Joueur, décontracté et très centré sur les humains."
+  },
+  "personality": {
+    "en": "Milo follows footsteps like a little shadow. He loves interactive toys, gentle handling, and nap piles. He has been raised alongside daily household sounds and gentle visitors.",
+    "fr": "Milo suit les pas comme une petite ombre. Il adore les jouets interactifs, les caresses douces et les siestes en groupe. Il a grandi avec les bruits du quotidien et des visiteurs calmes."
+  },
+  "status": "Available",
+  "featured": true,
+  "coverImage": "/images/cats/placeholder-2.svg",
+  "gallery": [
+    "/images/cats/placeholder-2.svg",
+    "/images/cats/placeholder-4.svg",
+    "/images/cats/placeholder-5.svg"
+  ],
+  "healthNote": {
+    "en": "Kitten series in progress; records provided at placement.",
+    "fr": "Série vaccinale en cours; dossiers remis au départ."
+  },
+  "parentsNote": {
+    "en": "Parents tested for common breed-relevant concerns; summary available on request.",
+    "fr": "Parents testés pour les points courants de la race; synthèse sur demande."
+  }
+}

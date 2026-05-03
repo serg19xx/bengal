@@ -1,0 +1,9 @@
+---
+export const prerender = false;
+import CmsShell from "../../layouts/CmsShell.astro";
+import CmsRoot from "../../vue-cms/CmsRoot.vue";
+---
+
+<CmsShell>
+  <CmsRoot client:only="vue" />
+</CmsShell>

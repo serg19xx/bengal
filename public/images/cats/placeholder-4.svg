@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img" aria-label="Placeholder cat photo 4">
+  <rect width="1200" height="900" fill="#f7f1ea"/>
+  <circle cx="650" cy="390" r="145" fill="#d2c0ad" opacity="0.9"/>
+  <ellipse cx="480" cy="530" rx="190" ry="155" fill="#c4b19f" opacity="0.84"/>
+  <circle cx="600" cy="360" r="18" fill="#2a221c" opacity="0.28"/>
+  <circle cx="690" cy="360" r="18" fill="#2a221c" opacity="0.28"/>
+  <text x="600" y="820" text-anchor="middle" font-family="Georgia,serif" font-size="28" fill="#6b635c" opacity="0.7">Placeholder 4</text>
+</svg>

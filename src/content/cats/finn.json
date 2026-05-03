@@ -1,0 +1,28 @@
+{
+  "slug": "finn",
+  "sortOrder": 40,
+  "name": "Finn",
+  "breed": { "en": "British Shorthair", "fr": "British Shorthair" },
+  "age": { "en": "5 years", "fr": "5 ans" },
+  "gender": "Male",
+  "personalityShort": {
+    "en": "Steady companion with a quiet sense of humor.",
+    "fr": "Compagnon posé, avec un humour discret."
+  },
+  "personality": {
+    "en": "Finn enjoys predictable schedules and soft voices. He is not a door-dasher and prefers indoor-only life with enrichment and climbing spaces.",
+    "fr": "Finn aime les horaires prévisibles et les voix douces. Il ne se précipite pas vers la porte et préfère la vie d'intérieur avec enrichissement et grimpettes."
+  },
+  "status": "Sold",
+  "featured": false,
+  "coverImage": "/images/cats/placeholder-4.svg",
+  "gallery": ["/images/cats/placeholder-4.svg"],
+  "healthNote": {
+    "en": "Historical records archived; placement completed.",
+    "fr": "Dossiers archivés; placement terminé."
+  },
+  "parentsNote": {
+    "en": "Parents on file for reference breeding lines.",
+    "fr": "Parents documentés pour les lignées de référence."
+  }
+}

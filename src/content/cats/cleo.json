@@ -1,0 +1,38 @@
+{
+  "slug": "cleo",
+  "sortOrder": 30,
+  "name": "Cleo",
+  "breed": {
+    "en": "Scottish Straight",
+    "fr": "Scottish Straight"
+  },
+  "age": {
+    "en": "2 years",
+    "fr": "2 ans"
+  },
+  "gender": "Female",
+  "personalityShort": {
+    "en": "Curious, chatty, and confident indoors.",
+    "fr": "Curieuse, bavarde et confiante à l'intérieur."
+  },
+  "personality": {
+    "en": "Cleo likes to supervise chores and greet guests. She is socialized with respectful children and calm dogs through a slow, positive protocol.",
+    "fr": "Cleo supervise les tâches ménagères et salue les invités. Elle est socialisée avec des enfants respectueux et des chiens calmes, avec un protocole lent et positif."
+  },
+  "status": "Reserved",
+  "featured": true,
+  "coverImage": "/images/cats/cleo/1777836995591-2t0msb.webp",
+  "gallery": [
+    "/images/cats/cleo/1777836811182-2s64s1.webp",
+    "/images/cats/cleo/1777836995591-2t0msb.webp",
+    "/images/cats/cleo/1777837048357-puuvg1.webp"
+  ],
+  "healthNote": {
+    "en": "Spayed; dental cleared at last wellness visit.",
+    "fr": "Stérilisée; bilan dentaire favorable à la dernière visite."
+  },
+  "parentsNote": {
+    "en": "Pedigree and parent photos available to waitlist families.",
+    "fr": "Pedigree et photos des parents disponibles pour les familles en liste."
+  }
+}

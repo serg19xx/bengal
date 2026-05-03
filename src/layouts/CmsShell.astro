@@ -1,0 +1,30 @@
+---
+/**
+ * Full document shell for /cms only. Main site uses Layout.astro with viewport;
+ * CMS pages previously rendered a fragment without <meta name="viewport">, so
+ * mobile browsers used a wide layout and scaled the whole page down.
+ */
+import Fonts from "../components/Fonts.astro";
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+}
+
+const { title = "CMS · Willow Home" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="ru" class="bg-cream-50">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <Fonts />
+  </head>
+  <body class="min-h-screen bg-cream-50 font-sans text-soft-900 antialiased">
+    <slot />
+  </body>
+</html>

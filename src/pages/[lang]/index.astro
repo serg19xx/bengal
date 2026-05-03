@@ -1,0 +1,129 @@
+---
+export const prerender = true;
+import Layout from "../../layouts/Layout.astro";
+import Hero from "../../components/Hero.astro";
+import SectionTitle from "../../components/SectionTitle.astro";
+import CatCard from "../../components/CatCard.astro";
+import CTASection from "../../components/CTASection.astro";
+import AnnouncementBanner from "../../components/AnnouncementBanner.astro";
+import { getFeaturedCats } from "../../data/cats";
+import { getStaticLangPaths, isLocale, defaultLocale } from "../../i18n/config";
+import type { Locale } from "../../i18n/config";
+import { getMessages } from "../../i18n/messages";
+import { pathFor } from "../../i18n/paths";
+
+export function getStaticPaths() {
+  return getStaticLangPaths();
+}
+
+const langParam = Astro.params.lang;
+const lang: Locale = isLocale(langParam) ? langParam : defaultLocale;
+const m = getMessages(lang);
+
+const featured = getFeaturedCats().slice(0, 4);
+const heroImage = "/images/cats/placeholder-1.svg";
+---
+
+<Layout lang={lang} title={m.home.title} description={m.meta.defaultDescription}>
+  <div class="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-14">
+    <AnnouncementBanner text={m.announcement.text} href={pathFor(lang, "adoption")} ctaLabel={m.announcement.cta} />
+
+    <Hero
+      eyebrow={m.hero.eyebrow}
+      title={m.home.heroTitle}
+      subtitle={m.home.heroSubtitle}
+      imageSrc={heroImage}
+      imageAlt={m.home.heroImageAlt}
+      primaryHref={pathFor(lang, "cats")}
+      primaryLabel={m.hero.primary}
+      secondaryHref={pathFor(lang, "contact")}
+      secondaryLabel={m.hero.secondary}
+    />
+
+    <section class="mt-16 sm:mt-20">
+      <SectionTitle
+        eyebrow={m.home.welcomeEyebrow}
+        title={m.home.welcomeTitle}
+        subtitle={m.home.welcomeSubtitle}
+      />
+      <div class="max-w-3xl space-y-4 text-warm-600 leading-relaxed">
+        <p>{m.home.welcomeP1}</p>
+        <p>{m.home.welcomeP2}</p>
+      </div>
+    </section>
+
+    <section class="mt-16 sm:mt-20 rounded-3xl border border-beige-300/70 bg-white px-6 py-10 sm:px-10 sm:py-12 shadow-sm">
+      <SectionTitle
+        eyebrow={m.home.healthEyebrow}
+        title={m.home.healthTitle}
+        subtitle={m.home.healthSubtitle}
+      />
+      <ul class="mt-6 max-w-3xl list-disc space-y-3 pl-5 text-warm-600 leading-relaxed marker:text-soft-800">
+        <li>{m.home.healthLi1}</li>
+        <li>{m.home.healthLi2}</li>
+      </ul>
+    </section>
+
+    <section class="mt-16 sm:mt-20">
+      <SectionTitle
+        eyebrow={m.home.featuredEyebrow}
+        title={m.home.featuredTitle}
+        subtitle={m.home.featuredSubtitle}
+      />
+      <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        {featured.map((cat) => <CatCard cat={cat} lang={lang} />)}
+      </div>
+    </section>
+
+    <section class="mt-16 sm:mt-20">
+      <SectionTitle
+        eyebrow={m.home.philosophyEyebrow}
+        title={m.home.philosophyTitle}
+        subtitle={m.home.philosophySubtitle}
+      />
+      <ul class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <li class="rounded-3xl border border-beige-300/70 bg-white p-6 shadow-sm">
+          <h3 class="font-serif text-lg font-semibold text-soft-900">{m.home.card1Title}</h3>
+          <p class="mt-2 text-sm leading-relaxed text-warm-600">{m.home.card1Body}</p>
+        </li>
+        <li class="rounded-3xl border border-beige-300/70 bg-white p-6 shadow-sm">
+          <h3 class="font-serif text-lg font-semibold text-soft-900">{m.home.card2Title}</h3>
+          <p class="mt-2 text-sm leading-relaxed text-warm-600">{m.home.card2Body}</p>
+        </li>
+        <li class="rounded-3xl border border-beige-300/70 bg-white p-6 shadow-sm sm:col-span-2 lg:col-span-1">
+          <h3 class="font-serif text-lg font-semibold text-soft-900">{m.home.card3Title}</h3>
+          <p class="mt-2 text-sm leading-relaxed text-warm-600">{m.home.card3Body}</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="mt-16 sm:mt-20 rounded-3xl border border-beige-300/60 bg-cream-100 px-6 py-10 sm:px-10">
+      <h2 class="font-serif text-2xl font-semibold text-soft-900">{m.home.pawTeaserTitle}</h2>
+      <p class="mt-3 max-w-2xl text-warm-600 leading-relaxed">{m.home.pawTeaserBody}</p>
+      <div class="mt-6 flex flex-wrap gap-3">
+        <a
+          href={pathFor(lang, "adoption")}
+          class="inline-flex rounded-2xl bg-soft-800 px-5 py-3 text-sm font-semibold text-cream-50 hover:bg-soft-700"
+        >
+          {m.home.pawTeaserAdoption}
+        </a>
+        <a
+          href={pathFor(lang, "varieties")}
+          class="inline-flex rounded-2xl border border-beige-300 bg-white px-5 py-3 text-sm font-semibold text-soft-800 hover:bg-cream-50"
+        >
+          {m.home.pawTeaserVarieties}
+        </a>
+      </div>
+    </section>
+
+    <div class="mt-16 sm:mt-20">
+      <CTASection
+        title={m.home.ctaTitle}
+        links={[
+          { href: pathFor(lang, "cats"), label: m.home.ctaPrimary, variant: "primary" },
+          { href: pathFor(lang, "contact"), label: m.home.ctaSecondary, variant: "secondary" },
+        ]}
+      />
+    </div>
+  </div>
+</Layout>
