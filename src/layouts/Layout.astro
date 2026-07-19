@@ -39,7 +39,7 @@ const hrefFr = new URL(swapLocaleInPath(pathname, "fr"), Astro.site ?? Astro.url
     <link rel="alternate" hreflang="x-default" href={hrefEn} />
     <Fonts />
   </head>
-  <body class="min-h-screen flex flex-col text-warm-600">
+  <body class="page-wash min-h-screen flex flex-col text-warm-600">
     <Header lang={lang} />
     <!-- pt matches fixed header height (logo row + vertical padding + border) -->
     <main class="flex-1 isolate pt-[4.75rem]">

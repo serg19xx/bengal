@@ -1,0 +1,65 @@
+---
+/** Portrait row for a small set of breeding adults (Cats page). Kittens use CatCard grid instead. */
+import type { Locale } from "../i18n/config";
+import { getMessages } from "../i18n/messages";
+import { pathFor } from "../i18n/paths";
+import type { Cat } from "../data/cats";
+import { displayAgeLine, formatCatBirthDate, pickLocalized } from "../data/cats";
+
+interface Props {
+  cat: Cat;
+  lang: Locale;
+  /** Alternate photo/text sides for a small showcase */
+  reverse?: boolean;
+}
+
+const { cat, lang, reverse = false } = Astro.props;
+const m = getMessages(lang);
+
+const href = pathFor(lang, "cats", cat.slug);
+const breed = pickLocalized(cat.breed, lang);
+const personalityShort = pickLocalized(cat.personalityShort, lang);
+const genderLabel = m.gender[cat.gender];
+const showBirth = Boolean(cat.birthDate) && /^\d{4}-\d{2}-\d{2}$/.test(cat.birthDate!);
+const ageValue = showBirth ? formatCatBirthDate(cat.birthDate!, lang) : displayAgeLine(cat, lang);
+---
+
+<article class="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
+  <a
+    href={href}
+    class:list={[
+      "block overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400",
+      reverse && "lg:order-2",
+    ]}
+  >
+    <img
+      src={cat.coverImage}
+      alt={`${cat.name}, ${breed}`}
+      width="900"
+      height="720"
+      loading="lazy"
+      class="soft-photo--soft aspect-[4/3] w-full object-cover lg:aspect-[5/4]"
+    />
+  </a>
+
+  <div class:list={["px-1", reverse && "lg:order-1"]}>
+    <p class="font-script text-2xl text-amber-500">{breed}</p>
+    <h2 class="mt-1 font-serif text-3xl sm:text-4xl font-semibold text-soft-900 tracking-tight">
+      <a href={href} class="hover:text-burgundy-700 transition">{cat.name}</a>
+    </h2>
+    <p class="mt-2 text-sm text-warm-500">
+      {ageValue}
+      <span class="mx-2 text-warm-400" aria-hidden="true">·</span>
+      {genderLabel}
+    </p>
+    <p class="mt-4 text-warm-600 leading-relaxed max-w-md">{personalityShort}</p>
+    <a
+      href={href}
+      class="mt-6 inline-flex text-sm font-semibold text-soft-800 underline decoration-amber-400/70 underline-offset-4 hover:text-burgundy-700"
+    >
+      {m.catCard.viewProfile}
+      <span aria-hidden="true" class="ml-1">→</span>
+    </a>
+  </div>
+</article>
+

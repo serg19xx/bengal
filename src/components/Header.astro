@@ -10,14 +10,12 @@ interface Props {
 const { lang } = Astro.props;
 const m = getMessages(lang);
 
+/** Core IA: cats (breeders) + kittens + gallery + contact. Extra pages live in the footer for now. */
 const nav = [
   { href: pathFor(lang), label: m.nav.home },
-  { href: pathFor(lang, "about"), label: m.nav.about },
   { href: pathFor(lang, "cats"), label: m.nav.cats },
-  { href: pathFor(lang, "kittens"), label: m.nav.available },
+  { href: pathFor(lang, "kittens"), label: m.nav.kittens },
   { href: pathFor(lang, "gallery"), label: m.nav.gallery },
-  { href: pathFor(lang, "adoption"), label: m.nav.adoption },
-  { href: pathFor(lang, "varieties"), label: m.nav.varieties },
   { href: pathFor(lang, "contact"), label: m.nav.contact },
 ];
 
@@ -25,22 +23,22 @@ const pathname = Astro.url.pathname;
 ---
 
 <header
-  class="fixed inset-x-0 top-0 z-[10000] w-full border-b border-beige-300/60 bg-cream-50/95 backdrop-blur-md"
+  class="fixed inset-x-0 top-0 z-[10000] w-full border-b border-beige-300/40 bg-cream-50/90 backdrop-blur-md"
 >
   <div class="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-4 sm:px-6">
     <a
       href={pathFor(lang)}
-      class="group flex min-w-0 items-center gap-2 rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-soft-700"
+      class="group flex min-w-0 items-center gap-2 rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400"
     >
       <span
-        class="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-soft-800 text-cream-50 font-serif text-lg font-semibold shadow-sm"
+        class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-burgundy-800 text-cream-50 font-serif text-lg font-semibold"
         aria-hidden="true"
       >
         W
       </span>
       <span class="flex min-w-0 flex-col leading-tight">
-        <span class="font-serif text-lg font-semibold text-soft-900 group-hover:text-soft-800 truncate">{m.brand.line1}</span>
-        <span class="text-xs font-medium uppercase tracking-wider text-warm-500">{m.brand.line2}</span>
+        <span class="font-serif text-lg font-semibold text-soft-900 group-hover:text-burgundy-700 truncate">{m.brand.line1}</span>
+        <span class="font-script text-base text-amber-500 leading-none">{m.brand.line2}</span>
       </span>
     </a>
 

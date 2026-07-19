@@ -1,0 +1,17 @@
+---
+/**
+ * Short accent text on a dark brush / feathered mark (flyer-style).
+ * Prefer one line or a very short phrase.
+ */
+interface Props {
+  as?: "p" | "h2" | "h3" | "span" | "div";
+  block?: boolean;
+  class?: string;
+}
+
+const { as: Tag = "p", block = false, class: className } = Astro.props;
+---
+
+<Tag class:list={["ink-banner font-serif text-lg sm:text-xl font-semibold tracking-tight", block && "ink-banner--block", className]}>
+  <slot />
+</Tag>

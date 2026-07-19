@@ -160,8 +160,39 @@ export function getCatBySlug(slug: string): Cat | undefined {
   return cats.find((c) => c.slug === slug);
 }
 
+/** Kittens currently for sale — used on the Home page (section hidden when empty). */
 export function getAvailableCats(): Cat[] {
-  return cats.filter((c) => c.status === "Available");
+  return cats
+    .filter((c) => c.status === "Available")
+    .slice()
+    .sort((a, b) => (a.sortOrder ?? 999) - (b.sortOrder ?? 999) || a.name.localeCompare(b.name));
+}
+
+/** Adult breeding cats — typically a small set (2–4), not a filterable catalog. */
+export function getBreedingCats(): Cat[] {
+  return cats
+    .filter((c) => c.status === "Not for sale")
+    .slice()
+    .sort((a, b) => (a.sortOrder ?? 999) - (b.sortOrder ?? 999) || a.name.localeCompare(b.name));
+}
+
+const STATUS_RANK: Record<CatStatus, number> = {
+  Available: 0,
+  Reserved: 1,
+  Sold: 2,
+  "Not for sale": 3,
+};
+
+/** All placement cats including sold — litter history on the Kittens page. */
+export function getKittenCats(): Cat[] {
+  return cats
+    .filter((c) => c.status === "Available" || c.status === "Reserved" || c.status === "Sold")
+    .slice()
+    .sort((a, b) => {
+      const byStatus = STATUS_RANK[a.status] - STATUS_RANK[b.status];
+      if (byStatus !== 0) return byStatus;
+      return (a.sortOrder ?? 999) - (b.sortOrder ?? 999) || a.name.localeCompare(b.name);
+    });
 }
 
 export function getFeaturedCats(): Cat[] {
@@ -174,15 +205,48 @@ export function getUniqueBreedKeys(): string[] {
 }
 
 export function getAllGalleryImages(): string[] {
-  const seen = new Set<string>();
-  const out: string[] = [];
-  for (const cat of cats) {
-    for (const src of cat.gallery) {
-      if (!seen.has(src)) {
-        seen.add(src);
-        out.push(src);
+  return getGalleryItems("en").map((item) => item.src);
+}
+
+/** One gallery photo tied to a cat — photos from the same cat may be interleaved. */
+export interface GalleryItem {
+  src: string;
+  slug: string;
+  name: string;
+  gender: CatGender;
+  age: string;
+  status: CatStatus;
+}
+
+/**
+ * Flat gallery feed for the Gallery page.
+ * Photos are interleaved (round-robin per cat) so siblings are not always consecutive.
+ */
+export function getGalleryItems(lang: Locale): GalleryItem[] {
+  const buckets = cats.map((cat) => {
+    const age = displayAgeLine(cat, lang);
+    return cat.gallery.map((src) => ({
+      src,
+      slug: cat.slug,
+      name: cat.name,
+      gender: cat.gender,
+      age,
+      status: cat.status,
+    }));
+  });
+
+  const out: GalleryItem[] = [];
+  let index = 0;
+  let hasMore = true;
+  while (hasMore) {
+    hasMore = false;
+    for (const bucket of buckets) {
+      if (index < bucket.length) {
+        out.push(bucket[index]!);
+        hasMore = true;
       }
     }
+    index += 1;
   }
   return out;
 }

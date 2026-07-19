@@ -9,14 +9,11 @@ const { text, href, ctaLabel } = Astro.props;
 ---
 
 <div
-  class="mb-8 flex flex-col gap-3 rounded-2xl border border-beige-300/80 bg-cream-200/60 px-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-6"
+  class="mb-2 flex flex-col gap-3 rounded-2xl border border-beige-300/70 bg-cream-100/90 px-5 py-4 sm:flex-row sm:items-center sm:justify-between"
   role="status"
 >
-  <p class="text-sm font-medium text-soft-900">{text}</p>
-  <a
-    href={href}
-    class="inline-flex shrink-0 items-center justify-center rounded-xl bg-soft-800 px-4 py-2.5 text-xs font-semibold text-cream-50 hover:bg-soft-700 transition"
-  >
+  <p class="text-sm font-medium leading-relaxed text-soft-800 max-w-2xl">{text}</p>
+  <a href={href} class="btn-brush shrink-0 self-start sm:self-center">
     {ctaLabel}
   </a>
 </div>

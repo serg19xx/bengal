@@ -71,7 +71,7 @@ onUnmounted(() => {
       <li v-for="(src, i) in images" :key="`${src}-${i}`">
         <button
           type="button"
-          class="group relative w-full overflow-hidden rounded-2xl border border-beige-300/80 bg-cream-100 aspect-4/3 focus:outline-none focus-visible:ring-2 focus-visible:ring-soft-700 focus-visible:ring-offset-2"
+          class="gallery-stamp group relative w-full overflow-hidden bg-cream-100 aspect-4/3 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-2 focus-visible:ring-offset-cream-50"
           @click="openAt(i)"
         >
           <img :src="src" :alt="altFor(i)" class="h-full w-full object-cover transition duration-300 group-hover:scale-[1.04]" loading="lazy" />

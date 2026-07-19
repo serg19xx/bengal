@@ -1,9 +1,17 @@
 ---
+/**
+ * Home-only full-bleed hero (soft-organic).
+ * Phone originals get editorial treatment via CSS layers (grade / warm / feather).
+ * Drop raw shots in `public/images/hero/raw/` — we process crop + export for you.
+ */
+import HeroSlides from "./vue/HeroSlides.vue";
+
 interface Props {
   eyebrow: string;
   title: string;
   subtitle: string;
-  imageSrc: string;
+  /** One or more images; multiple = gentle crossfade on Home */
+  images: string[];
   imageAlt: string;
   primaryHref: string;
   primaryLabel: string;
@@ -11,44 +19,64 @@ interface Props {
   secondaryLabel: string;
 }
 
-const { eyebrow, title, subtitle, imageSrc, imageAlt, primaryHref, primaryLabel, secondaryHref, secondaryLabel } =
+const { eyebrow, title, subtitle, images, imageAlt, primaryHref, primaryLabel, secondaryHref, secondaryLabel } =
   Astro.props;
+
+const slides = images.filter(Boolean);
+const single = slides[0] ?? "/images/cats/placeholder-1.svg";
 ---
 
-<section class="relative overflow-hidden rounded-3xl border border-beige-300/70 bg-cream-100">
-  <div class="grid lg:grid-cols-2 gap-0">
-    <div class="flex flex-col justify-center px-6 py-12 sm:px-10 sm:py-16 lg:py-20 order-2 lg:order-1">
-      <p class="text-sm font-medium uppercase tracking-widest text-soft-700/85">{eyebrow}</p>
-      <h1 class="mt-3 font-serif text-4xl sm:text-5xl font-semibold text-soft-900 tracking-tight leading-tight">
+<section class="relative isolate min-h-[min(78vh,52rem)] overflow-hidden bg-cream-100">
+  <div class="absolute inset-0 hero-feather">
+    {
+      slides.length > 1 ? (
+        <HeroSlides client:load images={slides} alt={imageAlt} />
+      ) : (
+        <img
+          src={single}
+          alt={imageAlt}
+          class="hero-photo absolute inset-0 h-full w-full object-cover object-[70%_center]"
+          loading="eager"
+          fetchpriority="high"
+          width="1920"
+          height="1080"
+        />
+      )
+    }
+  </div>
+
+  <!-- Editorial overlays: make ordinary phone photos feel intentional -->
+  <div class="hero-warm absolute inset-0" aria-hidden="true"></div>
+  <div class="hero-grade absolute inset-0" aria-hidden="true"></div>
+  <div
+    class="absolute inset-0 bg-gradient-to-r from-cream-50 via-cream-50/80 to-transparent sm:from-cream-50 sm:via-cream-50/70 sm:to-cream-50/10"
+    aria-hidden="true"
+  >
+  </div>
+  <div
+    class="absolute inset-0 bg-gradient-to-t from-cream-50/90 via-transparent to-cream-50/50"
+    aria-hidden="true"
+  >
+  </div>
+
+  <div class="relative z-10 mx-auto flex min-h-[min(78vh,52rem)] max-w-6xl items-center px-4 py-16 sm:px-6 sm:py-20">
+    <div class="max-w-xl">
+      <p class="font-script text-2xl sm:text-3xl text-amber-500">{eyebrow}</p>
+      <h1 class="mt-2 font-serif text-4xl sm:text-5xl lg:text-6xl font-semibold text-soft-900 tracking-tight leading-tight">
         {title}
       </h1>
-      <p class="mt-5 text-lg leading-relaxed text-warm-600 max-w-xl">{subtitle}</p>
-      <div class="mt-8 flex flex-col sm:flex-row gap-3">
-        <a
-          href={primaryHref}
-          class="inline-flex justify-center rounded-2xl bg-soft-800 px-6 py-3.5 text-sm font-semibold text-cream-50 hover:bg-soft-700 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-soft-700 focus-visible:ring-offset-2"
-        >
+      <p class="mt-5 text-lg leading-relaxed text-warm-600">{subtitle}</p>
+      <div class="mt-8 flex flex-col sm:flex-row sm:flex-wrap gap-3 sm:items-center">
+        <a href={primaryHref} class="btn-brush">
           {primaryLabel}
         </a>
         <a
           href={secondaryHref}
-          class="inline-flex justify-center rounded-2xl border border-beige-300 bg-white px-6 py-3.5 text-sm font-semibold text-soft-800 hover:bg-cream-50 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-soft-700 focus-visible:ring-offset-2"
+          class="inline-flex justify-center px-2 py-2 text-sm font-semibold text-soft-800 underline decoration-amber-400/70 underline-offset-4 hover:text-burgundy-700 transition"
         >
           {secondaryLabel}
         </a>
       </div>
-    </div>
-    <div class="relative min-h-[280px] sm:min-h-[360px] lg:min-h-full order-1 lg:order-2">
-      <img
-        src={imageSrc}
-        alt={imageAlt}
-        class="absolute inset-0 h-full w-full object-cover"
-        loading="eager"
-        fetchpriority="high"
-        width="1200"
-        height="900"
-      />
-      <div class="absolute inset-0 bg-gradient-to-t from-soft-900/25 via-transparent to-transparent lg:bg-gradient-to-l" />
     </div>
   </div>
 </section>

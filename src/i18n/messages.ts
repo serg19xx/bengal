@@ -11,6 +11,7 @@ export const messagesEn = {
     home: "Home",
     about: "About",
     cats: "Cats",
+    kittens: "Kittens",
     available: "Available",
     gallery: "Gallery",
     contact: "Contact",
@@ -22,18 +23,19 @@ export const messagesEn = {
     blurb:
       "Small home breeding with a focus on temperament, socialization, and lifelong support for our cats and their families.",
     socialLabel: "Social (placeholders)",
+    moreLabel: "More",
     instagram: "Instagram",
     facebook: "Facebook",
     legal: "Content and images are placeholders.",
   },
   hero: {
     eyebrow: "Home cattery",
-    primary: "View cats",
-    secondary: "Contact us",
+    primary: "View kittens",
+    secondary: "Our cats",
   },
   announcement: {
     text: "We may have kittens soon — join the waitlist and tell us about your home.",
-    cta: "Adoption process",
+    cta: "See kittens",
   },
   home: {
     title: "Home",
@@ -53,6 +55,11 @@ export const messagesEn = {
     featuredTitle: "Cats you may meet first",
     featuredSubtitle:
       "A few of the personalities currently part of our home program. Availability changes — always confirm on the Available page or by message.",
+    availableEyebrow: "Available now",
+    availableTitle: "Kittens looking for a home",
+    availableSubtitle:
+      "Only kittens currently for sale. This list shrinks as placements are confirmed — when it is empty, check Kittens for litter history or message us.",
+    availableSeeAll: "See all kittens & past litters",
     healthEyebrow: "Peace of mind",
     healthTitle: "Excellent health is the baseline",
     healthSubtitle:
@@ -119,9 +126,14 @@ export const messagesEn = {
   catsPage: {
     title: "Cats",
     eyebrow: "Our cats",
-    heading: "Personalities first",
+    heading: "The adults of our home",
     subtitle:
-      "Browse profiles and filter by breed, gender, or status. Photos and text are placeholders — replace with your real cats when ready.",
+      "A small breeding family — usually just a few adults. Open a profile for temperament, health notes, and lineage.",
+    empty: "Breeding cats will appear here soon.",
+    ctaTitle: "Looking for a kitten?",
+    ctaDescription: "See who is currently available, reserved, or already placed.",
+    ctaPrimary: "View kittens",
+    ctaSecondary: "Contact us",
   },
   catDetail: {
     gallerySr: "Photo gallery",
@@ -133,24 +145,31 @@ export const messagesEn = {
     metaFallback: "Cat profile",
   },
   kittensPage: {
-    title: "Available",
-    eyebrow: "Availability",
-    heading: "Available cats & kittens",
+    title: "Kittens",
+    eyebrow: "Kittens",
+    heading: "Litters & placement history",
     subtitle:
-      "This list is informational and can change quickly when families are matched. Please message us for the most current status.",
-    note: "Availability changes with reservations, vet timing, and the needs of each cat. If you fall in love with a profile, reach out — we will tell you honestly what is possible.",
-    empty: "There are no cats marked as available in the demo dataset right now.",
+      "Everyone who may join a home — available, reserved, and already placed. Coat/breed is on each card so you can follow litter history.",
+    note: "Sold kittens stay here as part of our program history. For current availability, look for the Available status or start on the Home page.",
+    empty: "No kittens are listed right now — check back or send a message about the waitlist.",
     ctaTitle: "Ask about timing",
     ctaDescription:
       "Tell us about your household rhythm, experience, and what you hope for in a companion. We read every message.",
     ctaPrimary: "Contact",
-    ctaSecondary: "Browse all cats",
+    ctaSecondary: "Meet our adults",
   },
   galleryPage: {
     title: "Gallery",
     eyebrow: "Moments",
     heading: "Gallery",
-    subtitle: "Tap any image to open a larger preview. Replace these placeholders with your own photography when ready.",
+    subtitle:
+      "Photos from our cats and kittens — mixed freely. Search by name, open a photo for details, or go to the full profile.",
+    searchLabel: "Search by name",
+    searchPlaceholder: "Type a name…",
+    resultCount: "{count} photos",
+    emptySearch: "No photos match that name.",
+    viewProfile: "Full profile",
+    contactAbout: "Ask about",
   },
   contactPage: {
     title: "Contact",
@@ -284,6 +303,7 @@ export const messagesFr: Messages = {
     home: "Accueil",
     about: "À propos",
     cats: "Chats",
+    kittens: "Chatons",
     available: "Disponibles",
     gallery: "Galerie",
     contact: "Contact",
@@ -295,18 +315,19 @@ export const messagesFr: Messages = {
     blurb:
       "Élevage familial réduit, axé sur le tempérament, la socialisation et un accompagnement durable pour nos chats et leurs familles.",
     socialLabel: "Réseaux (exemples)",
+    moreLabel: "Plus",
     instagram: "Instagram",
     facebook: "Facebook",
     legal: "Contenu et images d'exemple.",
   },
   hero: {
     eyebrow: "Chatterie familiale",
-    primary: "Voir les chats",
-    secondary: "Nous contacter",
+    primary: "Voir les chatons",
+    secondary: "Nos chats",
   },
   announcement: {
     text: "Des chatons pourraient arriver bientôt — inscrivez-vous sur la liste d'attente et parlez-nous de votre foyer.",
-    cta: "Processus d'adoption",
+    cta: "Voir les chatons",
   },
   home: {
     title: "Accueil",
@@ -326,6 +347,11 @@ export const messagesFr: Messages = {
     featuredTitle: "Les chats que vous croiserez peut-être en premier",
     featuredSubtitle:
       "Quelques personnalités du programme à la maison. La disponibilité change — vérifiez la page Disponibles ou écrivez-nous.",
+    availableEyebrow: "Disponibles maintenant",
+    availableTitle: "Chatons qui cherchent un foyer",
+    availableSubtitle:
+      "Uniquement les chatons actuellement à placer. La liste diminue au fil des placements — si elle est vide, consultez Chatons pour l'historique ou écrivez-nous.",
+    availableSeeAll: "Voir tous les chatons et portées passées",
     healthEyebrow: "Sérénité",
     healthTitle: "Une excellente santé comme point de départ",
     healthSubtitle:
@@ -397,9 +423,14 @@ export const messagesFr: Messages = {
   catsPage: {
     title: "Chats",
     eyebrow: "Nos chats",
-    heading: "Les personnalités d'abord",
+    heading: "Les adultes de notre maison",
     subtitle:
-      "Parcourez les profils et filtrez par race, sexe ou statut. Photos et textes sont des exemples — remplacez-les par vos données.",
+      "Une petite famille d'élevage — seulement quelques adultes. Ouvrez un profil pour le tempérament, la santé et la lignée.",
+    empty: "Les chats reproducteurs apparaîtront bientôt ici.",
+    ctaTitle: "Vous cherchez un chaton ?",
+    ctaDescription: "Voyez qui est disponible, réservé ou déjà placé.",
+    ctaPrimary: "Voir les chatons",
+    ctaSecondary: "Nous contacter",
   },
   catDetail: {
     gallerySr: "Galerie photos",
@@ -411,26 +442,32 @@ export const messagesFr: Messages = {
     metaFallback: "Profil du chat",
   },
   kittensPage: {
-    title: "Disponibles",
-    eyebrow: "Disponibilité",
-    heading: "Chats et chattons disponibles",
+    title: "Chatons",
+    eyebrow: "Chatons",
+    heading: "Portées et historique",
     subtitle:
-      "Cette liste est informative et peut changer rapidement lorsque des familles sont jumelées. Écrivez-nous pour le statut le plus récent.",
+      "Tous ceux qui peuvent rejoindre un foyer — disponibles, réservés et déjà placés. La robe/race figure sur chaque carte pour suivre l'historique des portées.",
     note:
-      "La disponibilité évolue avec les réservations, le calendrier vétérinaire et les besoins de chaque chat. Si un profil vous touche, contactez-nous — nous répondrons honnêtement.",
-    empty: "Aucun chat n'est marqué disponible dans les données de démonstration pour le moment.",
+      "Les chatons placés restent ici comme mémoire du programme. Pour la disponibilité actuelle, cherchez le statut Disponible ou commencez sur l'accueil.",
+    empty: "Aucun chaton n'est listé pour le moment — revenez plus tard ou écrivez-nous pour la liste d'attente.",
     ctaTitle: "Parlons du calendrier",
     ctaDescription:
       "Parlez-nous de votre rythme de vie, de votre expérience et de ce que vous recherchez comme compagnon. Nous lisons chaque message.",
     ctaPrimary: "Contact",
-    ctaSecondary: "Voir tous les chats",
+    ctaSecondary: "Rencontrer nos adultes",
   },
   galleryPage: {
     title: "Galerie",
     eyebrow: "Instants",
     heading: "Galerie",
     subtitle:
-      "Touchez une image pour l'agrandir. Remplacez ces exemples par vos propres photos lorsque vous êtes prêt·e.",
+      "Photos de nos chats et chatons — mélangées librement. Cherchez par nom, ouvrez une photo pour les détails, ou allez au profil complet.",
+    searchLabel: "Rechercher par nom",
+    searchPlaceholder: "Tapez un nom…",
+    resultCount: "{count} photos",
+    emptySearch: "Aucune photo ne correspond à ce nom.",
+    viewProfile: "Profil complet",
+    contactAbout: "Demander pour",
   },
   contactPage: {
     title: "Contact",

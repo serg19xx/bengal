@@ -1,0 +1,46 @@
+---
+/**
+ * Photo with organic feathered edges.
+ * - strong: hero / storytelling
+ * - soft: featured cards
+ * - stamp: gallery-adjacent previews (more readable)
+ */
+interface Props {
+  src: string;
+  alt: string;
+  strength?: "strong" | "soft" | "stamp";
+  width?: number;
+  height?: number;
+  loading?: "eager" | "lazy";
+  fetchpriority?: "high" | "low" | "auto";
+  class?: string;
+  imgClass?: string;
+}
+
+const {
+  src,
+  alt,
+  strength = "soft",
+  width = 1200,
+  height = 900,
+  loading = "lazy",
+  fetchpriority,
+  class: className,
+  imgClass,
+} = Astro.props;
+
+const maskClass =
+  strength === "strong" ? "soft-photo" : strength === "stamp" ? "gallery-stamp" : "soft-photo--soft";
+---
+
+<div class:list={["relative overflow-hidden", className]}>
+  <img
+    src={src}
+    alt={alt}
+    width={width}
+    height={height}
+    loading={loading}
+    fetchpriority={fetchpriority}
+    class:list={["h-full w-full object-cover", maskClass, imgClass]}
+  />
+</div>

@@ -2,11 +2,12 @@
 export const prerender = true;
 import Layout from "../../layouts/Layout.astro";
 import SectionTitle from "../../components/SectionTitle.astro";
-import ImageLightbox from "../../components/vue/ImageLightbox.vue";
-import { getAllGalleryImages } from "../../data/cats";
+import GalleryBrowser from "../../components/vue/GalleryBrowser.vue";
+import { getGalleryItems } from "../../data/cats";
 import { getStaticLangPaths, isLocale, defaultLocale } from "../../i18n/config";
 import type { Locale } from "../../i18n/config";
 import { getMessages } from "../../i18n/messages";
+import { pathFor } from "../../i18n/paths";
 
 export function getStaticPaths() {
   return getStaticLangPaths();
@@ -16,9 +17,21 @@ const langParam = Astro.params.lang;
 const lang: Locale = isLocale(langParam) ? langParam : defaultLocale;
 const m = getMessages(lang);
 
-const images = getAllGalleryImages();
-const alts = images.map((_, i) => `${m.galleryPage.heading} ${i + 1}`);
-const lightboxUi = m.lightbox;
+const items = getGalleryItems(lang);
+
+const galleryUi = {
+  ...m.lightbox,
+  searchLabel: m.galleryPage.searchLabel,
+  searchPlaceholder: m.galleryPage.searchPlaceholder,
+  resultCount: m.galleryPage.resultCount,
+  emptySearch: m.galleryPage.emptySearch,
+  viewProfile: m.galleryPage.viewProfile,
+  contactAbout: m.galleryPage.contactAbout,
+  age: m.catCard.age,
+  gender: m.catCard.gender,
+  genderLabels: m.gender,
+  statusLabels: m.status,
+};
 ---
 
 <Layout lang={lang} title={m.galleryPage.title} description={m.galleryPage.subtitle}>
@@ -28,6 +41,12 @@ const lightboxUi = m.lightbox;
       title={m.galleryPage.heading}
       subtitle={m.galleryPage.subtitle}
     />
-    <ImageLightbox client:load images={images} imageAlts={alts} ui={lightboxUi} />
+    <GalleryBrowser
+      client:load
+      items={items}
+      profileBasePath={pathFor(lang, "cats")}
+      contactBasePath={pathFor(lang, "contact")}
+      ui={galleryUi}
+    />
   </div>
 </Layout>

@@ -4,7 +4,7 @@ import Layout from "../../layouts/Layout.astro";
 import SectionTitle from "../../components/SectionTitle.astro";
 import CatCard from "../../components/CatCard.astro";
 import CTASection from "../../components/CTASection.astro";
-import { getAvailableCats } from "../../data/cats";
+import { getKittenCats } from "../../data/cats";
 import { getStaticLangPaths, isLocale, defaultLocale } from "../../i18n/config";
 import type { Locale } from "../../i18n/config";
 import { getMessages } from "../../i18n/messages";
@@ -18,7 +18,7 @@ const langParam = Astro.params.lang;
 const lang: Locale = isLocale(langParam) ? langParam : defaultLocale;
 const m = getMessages(lang);
 
-const available = getAvailableCats();
+const kittens = getKittenCats();
 ---
 
 <Layout lang={lang} title={m.kittensPage.title} description={m.kittensPage.subtitle}>
@@ -29,16 +29,16 @@ const available = getAvailableCats();
       subtitle={m.kittensPage.subtitle}
     />
 
-    <div class="rounded-3xl border border-amber-200/80 bg-amber-50/60 px-5 py-4 text-sm text-amber-950/90" role="note">
+    <p class="max-w-3xl rounded-2xl bg-cream-200/80 px-5 py-4 text-sm leading-relaxed text-soft-800" role="note">
       {m.kittensPage.note}
-    </div>
+    </p>
 
     {
-      available.length === 0 ? (
+      kittens.length === 0 ? (
         <p class="mt-10 text-warm-600">{m.kittensPage.empty}</p>
       ) : (
-        <div class="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {available.map((cat) => (
+        <div class="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          {kittens.map((cat) => (
             <CatCard cat={cat} lang={lang} />
           ))}
         </div>
